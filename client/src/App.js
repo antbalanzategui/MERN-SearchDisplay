@@ -15,6 +15,9 @@ function App() {
      * This function is used to establish the local storage
      * it first checks to see if the localStorage has been established to prevent redundant fetch calls
      */
+
+    const [localStorageEstablished, setLocalStorageEstablished] = useState(false);
+
     async function establishLocalStorage() {
         if (!localStorage.getItem("searchData")) { // Check if searchData is not in localStorage
             try {
@@ -24,13 +27,21 @@ function App() {
                     searchData: jsonData,
                 };
                 localStorage.setItem("searchData", JSON.stringify(searchData));
+                setLocalStorageEstablished(true);
             } catch (error) {
                 console.error(error);
             }
         }
+        else {
+            setLocalStorageEstablished(true);
+        }
     }
     // Establishes local Storage
-    establishLocalStorage().then(() => console.log("Local Storage Established!"));
+    useEffect(() => {
+        establishLocalStorage();
+    }, []);
+
+    
 
     // This is used strictly for responsive design
     const [windowDimensions, setWindowDimensions] = useState({width: window.innerWidth, height: window.innerHeight});
@@ -52,7 +63,11 @@ function App() {
     const barChartWidth = windowDimensions.width <= 768 ? windowDimensions.width * 0.4 : windowDimensions.width * 0.2;
 
 
-    // Returns App Component
+    // Returns App Component Will Not Return unless localStorage has been established !
+    if (!localStorageEstablished) {
+        return <div></div>;
+    }
+    else {
     return (
         <div className="App">
             <header className="App-header">
@@ -73,6 +88,7 @@ function App() {
             </div>
         </div>
     );
+    }
 }
 
     export default App;
