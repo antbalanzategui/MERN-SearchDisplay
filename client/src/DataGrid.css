@@ -1,0 +1,84 @@
+/* Antonio Balanzategui, 4/21/2023 */
+body {
+    background-color: #121212;
+    border: solid #535353;
+    padding-bottom: 1%;
+    font-family: "Lucida Console"
+}
+.container {
+    background-color: #212121;
+    border: solid #535353;
+}
+#histogram-chart {
+    color: #B3B3B3;
+}
+
+#scatter-plot {
+    color: #B3B3B3;
+    padding-top: 1%;
+}
+
+
+.App-header {
+    text-align: center;
+    font-size: 2vw;
+    color: #FFFFFF;
+}
+
+@media screen and (min-width: 768px) {
+
+    .gridContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        height: 90vh;
+    }
+
+    .scatPlot {
+        width: 90%;
+        padding-left: 3%;
+    }
+
+    .dataGrid {
+        width: 90%;
+        padding-left: 9%;
+        padding-top: 2%;
+        color: #B3B3B3;
+        height: 85vh;
+    }
+
+
+}
+
+@media screen and (max-width: 768px) {
+
+    .gridContainer {
+        grid-template-columns: 1fr;
+        padding-bottom: 60%;
+    }
+    .dataGrid {
+        width: 90%;
+        height: 100vh;
+        padding-left: 5%;
+        color: #B3B3B3;
+
+    }
+    .scatPlot {
+        padding-left: 15px;
+        width: 85%;
+    }
+    body {
+        overflow-x: hidden;
+    }
+}
+
+@media screen and (max-width: 767.9px) {
+
+    .gridContainer {
+        grid-template-columns: 1fr;
+        padding-bottom: 0;
+    }
+
+}
+
+
